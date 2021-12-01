@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  width: 500px;
+  margin: auto;
+}
+
+#menu_container, #button-container {
+  width: 450px;
+  margin: auto;
+  text-align: center;
+}
+
+#graph_name,
+#fitness {
+  width: 180px;
+  text-align: center;
+  margin: 10px;
+  font-size: 1.7em;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 5px;
+}
+
+#graph_name, #fitness {
+  position: inline;
+}
+
+#graph_name:before {
+  content: "Graph ";
+  float: left;
+}
+
+#fitness:after,
+#graph_name:after {
+  content: " ▾";
+  float: right;
+}
+
+#canvas {
+	width: 450px;
+	height: 450px;
+	margin: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.moran-button {
+  width: 180px;
+  font-size: 1.5em;
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px;
+  text-align: center;
+  border-radius: 6px;
+  transform: translateZ(0);
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+  backface-visibility: hidden;
+  color: gray;
+  transition-duration: 0.2s;
+  transition-property: transform;
+  background-image: radial-gradient(center center, circle cover, #eee, #999);
+  background-image: -o-radial-gradient(center center, circle cover, #eee, #999);
+  background-image: -ms-radial-gradient(center center, circle cover, #eee, #999);
+  background-image: -moz-radial-gradient(center center, circle cover, #eee, #999);
+  background-image: -webkit-radial-gradient(center center, circle cover, #eee, #999);
+}
+
+.moran-button.active {
+  color: black;
+  background-image: radial-gradient(center center, circle cover, #cec, #6d6);
+  background-image: -o-radial-gradient(center center, circle cover, #cec, #6d6);
+  background-image: -ms-radial-gradient(center center, circle cover, #cec, #6d6);
+  background-image: -moz-radial-gradient(center center, circle cover, #cec, #6d6);
+  background-image: -webkit-radial-gradient(center center, circle cover, #cec, #6d6);
+}
+
+.moran-button.active:hover,
+.moran-button.active:focus,
+.moran-button.active:active {
+  background-image: radial-gradient(center center, circle cover, #dfd, #7e7);
+  background-image: -o-radial-gradient(center center, circle cover, #dfd, #7e7);
+  background-image: -ms-radial-gradient(center center, circle cover, #dfd, #7e7);
+  background-image: -moz-radial-gradient(center center, circle cover, #dfd, #7e7);
+  background-image: -webkit-radial-gradient(center center, circle cover, #dfd, #7e7);
+  transform: scale(1.1);
+}
+
+/* Dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 180px;
+  background-color: #FFF;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.dropdown:hover .dropdown-content.active {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.circle {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 3px solid black;
+  border-radius:20px;
+  margin-bottom: -5px;
+}
+
+
+.circle.mutant {
+  background-color: #4D4;
+}
+.circle.resident {
+  background-color: #55F;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="js/raphael.js" charset="utf-8"></script>
+  <script src="js/jquery.js" charset="utf-8"></script>
+  <script src="js/stylesigrafos.js" charset="utf-8"></script>
+  <script src="js/graphs.js" charset="utf-8"></script>
+  <script src="js/moransigrafos.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/moran.css" type="text/css" />
+  <style type="text/css">
+    body {
+      zoom: 0.95;
+    }
+  </style>
+</head>
+<body>
+
+
+<div id="container">
+  <div id="menu_container">
+    <div id="graph_name" class="dropdown">
+      <span class="label"></span>
+      <div class="dropdown-content active"></div>
+    </div>
+    <div id="fitness" class="dropdown">
+      <span class="circle mutant"></span> = <span class="label"></span> <span class="circle resident"></span>
+      <div class="dropdown-content active"></div>
+    </div>
+  </div>
+  <div id="canvas"></div>
+  <div id="button-container">
+    <span class="moran-button active" id="1step">One step</span>
+    <span class="moran-button active" id="1iteration">To absorption</span>
+  </div>
+</div>
+
+</body>
+
+</html>
