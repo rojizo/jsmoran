@@ -25,6 +25,58 @@ function Kn(order) {
 }
 
 
+function C(order) {
+  var G = {
+    'name': '<em>C</em><sub>' + String(order) + '</sub>',
+    'order': order,
+    'neighbours': [],
+    'nodePos': []
+  }
+  
+  // To center it vertically
+  var yshift = ((order%2)==0)?0:((1-Math.cos(Math.PI/order))/2);
+  
+  for( var i=0 ; i<order ; i++ ){
+    G.neighbours.push([ (i+1)%order, (i - 1 + order)%order ]);
+
+    G.nodePos.push({'x': 0.9*Math.cos(2*Math.PI/order*i - Math.PI/2), 
+                    'y': 0.9*Math.sin(2*Math.PI/order*i - Math.PI/2) + yshift });
+  }
+  
+  return G;
+}
+
+function ER(order) {
+  var G = {
+    'name': '<em>ER</em><sub>' + String(order) + '</sub>(½)',
+    'order': order,
+    'neighbours': [],
+    'nodePos': []
+  }
+  
+  // To center it vertically
+  var yshift = ((order%2)==0)?0:((1-Math.cos(Math.PI/order))/2);
+  
+  for( var i=0 ; i<order ; i++ ){
+    G.neighbours.push([]);
+    G.nodePos.push({'x': 0.9*Math.cos(2*Math.PI/order*i - Math.PI/2), 
+                    'y': 0.9*Math.sin(2*Math.PI/order*i - Math.PI/2) + yshift });
+  }
+
+  for( var i=0 ; i<order-1 ; i++ ){
+    for( var j=i+1 ; j<order ; j++ ){
+      if(Math.random() < 0.5){
+        G.neighbours[j].push(i)
+        G.neighbours[i].push(j)
+      }
+    }
+  }
+
+  
+  return G;
+}
+
+
 var K1_3 = {
   'name': '<em>K</em><sub>1,3</sub>',
   'order': 4,

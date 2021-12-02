@@ -3,7 +3,7 @@
 // Global variables and state
 //
 
-var graphs = [Kn(4),K1_3,Kn(5),K1_4,Kn(6)];
+var graphs = [Kn(4),K1_3,Kn(5),K1_4,Kn(6),C(5), function(){return ER(5);}];
 
 
 // SVG objects
@@ -46,14 +46,17 @@ function setUIstate(new_state) {
 
 
 function SetGraph(graph) {
-  if( G == graph ) //If it is the same object... do nothing
-    return;
-  
+
   // Set global graph
-  G = graph;
+  if(graph instanceof Function) {
+    G = graph();
+  } else {
+    G = graph;
+  }
+  
   
   // Reset simulation
-  fixationProbability = [0,0];
+  ResetSimulation();
   
   // Set title
   $('#graph_name>.label').html(G.name);
@@ -70,7 +73,7 @@ function SetFitness(new_fitness){
   $('#fitness .label').html(fitness);
 
   // Reset simulation
-  fixationProbability = [0,0];
+  ResetSimulation();
 
   // Draw graph
   DrawGraph();
@@ -230,7 +233,10 @@ function OneStep(lag, callback){
 
 // Clears everything about the simulation, including graph
 function ResetSimulation(){
-  
+  sim_state = "ini";
+  mutants = [];
+  Nmutants = 0;
+  fixationProbability = [0,0];
 }
 
 
@@ -255,7 +261,8 @@ $(document).ready(function(){
   // Create the UI from graphs array
   var links = '';
   for( var i=0 ; i<graphs.length ; i++ )
-    links += '<a href="#" id="' + String(i) + '">' + graphs[i].name  + '</a>';
+    links += '<a href="#" id="' + String(i) + '">' 
+             + ((graphs[i] instanceof Function)?graphs[i]().name:graphs[i].name)  + '</a>';
   $("#graph_name .dropdown-content").html(links);
   
   //Greate GUI for fitness
